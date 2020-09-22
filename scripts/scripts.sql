@@ -1,0 +1,25 @@
+create database controlefinanceiro
+go
+
+CREATE LOGIN administrador WITH PASSWORD = '210920', DEFAULT_DATABASE=[controlefinanceiro]
+GO
+
+ALTER AUTHORIZATION ON DATABASE ::controlefinanceiro to administrador;
+go
+
+USE [controlefinanceiro]
+GO
+
+CREATE TABLE [dbo].[COTACAO_MOEDA](
+	[SEQ] [bigint] IDENTITY(1,1) NOT NULL,
+	[MOEDA] [varchar](20) NULL,
+	[COMPRAVALOR] [decimal](10, 4) NULL,
+	[VENDAVALOR] [decimal](10, 4) NULL,
+	[VARIACAOVALOR] [decimal](10, 3) NULL,
+	[DATACOTACAO] [datetime] NULL,
+ CONSTRAINT [PK_COTACAO_MOEDA] PRIMARY KEY CLUSTERED 
+(
+	[SEQ] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
